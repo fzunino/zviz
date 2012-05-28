@@ -1,11 +1,10 @@
 Zviz::Application.routes.draw do
-  get "visualization_controller/show"
-
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   resources :datasets
+  resources :visualizations
   root :to => "datasets#index"
 
   # The priority is based upon order of creation:
