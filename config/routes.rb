@@ -1,4 +1,6 @@
 Zviz::Application.routes.draw do
+  resources :datasets
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
