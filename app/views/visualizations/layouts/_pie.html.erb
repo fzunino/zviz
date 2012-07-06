@@ -1,0 +1,298 @@
+<head>
+  <style type="text/css">
+
+    body {
+      font: 14px Helvetica Neue;
+      text-rendering: optimizeLegibility;
+      margin-top: 1em;
+      overflow-y: scroll;
+    }
+
+  a {
+    color: steelblue;
+    text-decoration: none;
+  }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .body {
+      width: 960px;
+      margin: auto;
+    }
+
+    .topbar a {
+      margin-right: .5em;
+    }
+
+    .content {
+      position: relative;
+      margin-left: 240px;
+    }
+
+    .content img {
+      display: block;
+      margin: auto;
+    }
+
+    .sidebar {
+      position: absolute;
+      left: -240px;
+      width: 230px;
+      font-weight: 300;
+    }
+
+    .gallery {
+      position: relative;
+      left: -240px;
+      width: 970px;
+    }
+
+    .content .gallery img {
+      display: inline;
+      width: 226px;
+      height: 180px;
+      border: solid 2px #ccc;
+      margin-right: 10px;
+      margin-bottom: 8px;
+    }
+
+    .content .gallery a:hover img {
+      border-color: steelblue;
+    }
+
+    .list {
+      clear: left;
+      margin-top: 14px;
+    }
+
+    .list img {
+      float: left;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 300;
+      margin-bottom: .3em;
+    }
+
+    .sidebar {
+      color: #666;
+    }
+
+    .sidebar ul {
+      padding-left: 0;
+      list-style-type: none;
+    }
+
+    .sidebar li {
+      white-space: nowrap;
+      width: 230px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .sidebar h3 {
+      font-weight: 300;
+    }
+
+    .foot {
+      font-weight: 300;
+      margin-left: 240px;
+      padding-top: 3em;
+      width: 710px;
+      clear: both;
+    }
+
+    button {
+      background: #222 url(button-overlay.png) repeat-x;
+      font: 12px Helvetica Neue;
+      color: #fff;
+      text-shadow: 0 -1px 1px #222;
+      padding: 6px 10px 6px 10px;
+      border: 0;
+      border-bottom: 1px solid #222;
+      min-width: 80px;
+      -moz-border-radius: 5px;
+      -moz-box-shadow: 0 1px 3px #999;
+      -webkit-border-radius: 5px;
+      -webkit-box-shadow: 0 1px 3px #999;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    .highlight {
+      font: 12px monospace;
+    }
+
+    .highlight pre {
+      overflow-x: auto;
+    }
+    .highlight  { background: #eee; position: relative; margin-left: 3em; border-left: solid 1px #aaa; }
+    .highlight.ex { padding: .5em; }
+    .highlight .lineno { position: absolute; text-align: right; width: 2em; left: -3em; color: #ccc; }
+    .highlight .c { color: #999988; font-style: italic } /* Comment */
+    .highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
+    .highlight .k { font-weight: bold } /* Keyword */
+    .highlight .o { font-weight: bold } /* Operator */
+    .highlight .cm { color: #999988; font-style: italic } /* Comment.Multiline */
+    .highlight .cp { color: #999999; font-weight: bold } /* Comment.Preproc */
+    .highlight .c1 { color: #999988; font-style: italic } /* Comment.Single */
+    .highlight .cs { color: #999999; font-weight: bold; font-style: italic } /* Comment.Special */
+    .highlight .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
+    .highlight .gd .x { color: #000000; background-color: #ffaaaa } /* Generic.Deleted.Specific */
+    .highlight .ge { font-style: italic } /* Generic.Emph */
+    .highlight .gr { color: #aa0000 } /* Generic.Error */
+    .highlight .gh { color: #999999 } /* Generic.Heading */
+    .highlight .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
+    .highlight .gi .x { color: #000000; background-color: #aaffaa } /* Generic.Inserted.Specific */
+    .highlight .go { color: #888888 } /* Generic.Output */
+    .highlight .gp { color: #555555 } /* Generic.Prompt */
+    .highlight .gs { font-weight: bold } /* Generic.Strong */
+    .highlight .gu { color: #aaaaaa } /* Generic.Subheading */
+    .highlight .gt { color: #aa0000 } /* Generic.Traceback */
+    .highlight .kc { font-weight: bold } /* Keyword.Constant */
+    .highlight .kd { font-weight: bold } /* Keyword.Declaration */
+    .highlight .kp { font-weight: bold } /* Keyword.Pseudo */
+    .highlight .kr { font-weight: bold } /* Keyword.Reserved */
+    .highlight .kt { color: #445588; font-weight: bold } /* Keyword.Type */
+    .highlight .m { color: #009999 } /* Literal.Number */
+    .highlight .s { color: #d14 } /* Literal.String */
+    .highlight .na { color: #008080 } /* Name.Attribute */
+    .highlight .nb { color: #0086B3 } /* Name.Builtin */
+    .highlight .nc { color: #445588; font-weight: bold } /* Name.Class */
+    .highlight .no { color: #008080 } /* Name.Constant */
+    .highlight .ni { color: #800080 } /* Name.Entity */
+    .highlight .ne { color: #990000; font-weight: bold } /* Name.Exception */
+    .highlight .nf { color: #990000; font-weight: bold } /* Name.Function */
+    .highlight .nn { color: #555555 } /* Name.Namespace */
+    .highlight .nt { color: #000080 } /* Name.Tag */
+    .highlight .nv { color: #008080 } /* Name.Variable */
+    .highlight .ow { font-weight: bold } /* Operator.Word */
+    .highlight .w { color: #bbbbbb } /* Text.Whitespace */
+    .highlight .mf { color: #009999 } /* Literal.Number.Float */
+    .highlight .mh { color: #009999 } /* Literal.Number.Hex */
+    .highlight .mi { color: #009999 } /* Literal.Number.Integer */
+    .highlight .mo { color: #009999 } /* Literal.Number.Oct */
+    .highlight .sb { color: #d14 } /* Literal.String.Backtick */
+    .highlight .sc { color: #d14 } /* Literal.String.Char */
+    .highlight .sd { color: #d14 } /* Literal.String.Doc */
+    .highlight .s2 { color: #d14 } /* Literal.String.Double */
+    .highlight .se { color: #d14 } /* Literal.String.Escape */
+    .highlight .sh { color: #d14 } /* Literal.String.Heredoc */
+    .highlight .si { color: #d14 } /* Literal.String.Interpol */
+    .highlight .sx { color: #d14 } /* Literal.String.Other */
+    .highlight .sr { color: #009926 } /* Literal.String.Regex */
+    .highlight .s1 { color: #d14 } /* Literal.String.Single */
+    .highlight .ss { color: #990073 } /* Literal.String.Symbol */
+    .highlight .bp { color: #999999 } /* Name.Builtin.Pseudo */
+    .highlight .vc { color: #008080 } /* Name.Variable.Class */
+    .highlight .vg { color: #008080 } /* Name.Variable.Global */
+    .highlight .vi { color: #008080 } /* Name.Variable.Instance */
+    .highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
+
+        .node rect {
+          cursor: pointer;
+          fill: #fff;
+          fill-opacity: .5;
+          stroke: #3182bd;
+          stroke-width: 1.5px;
+        }
+
+        .node text {
+          font: 10px sans-serif;
+          pointer-events: none;
+        }
+
+        path.link {
+          fill: none;
+          stroke: #9ecae1;
+          stroke-width: 1.5px;
+        }
+  </style>
+</head>
+
+ <body>
+    <div class="body">
+      <div class="content">
+        <div class='gallery' id='chart'>
+          
+        </div>
+  <script type='text/javascript'>
+  var width = 960,
+    height = 700,
+    radius = Math.min(width, height) / 2,
+    color = d3.scale.category20c();
+
+var vis = d3.select("#chart").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+var partition = d3.layout.partition()
+    .sort(null)
+    .size([2 * Math.PI, radius * radius])
+    .value(function(d) { return 1; });
+
+var arc = d3.svg.arc()
+    .startAngle(function(d) { return d.x; })
+    .endAngle(function(d) { return d.x + d.dx; })
+    .innerRadius(function(d) { return Math.sqrt(d.y); })
+    .outerRadius(function(d) { return Math.sqrt(d.y + d.dy); });
+
+d3.json("<%= @visualization.dataset.data.url %>", function(json) {
+  var path = vis.data([json]).selectAll("path")
+      .data(partition.nodes)
+    .enter().append("path")
+      .attr("display", function(d) { return d.depth ? null : "none"; }) // hide inner ring
+      .attr("d", arc)
+      .attr("fill-rule", "evenodd")
+      .style("stroke", "#fff")
+      .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
+      .each(stash);
+
+  d3.select("#size").on("click", function() {
+    path
+        .data(partition.value(function(d) { return d.size; }))
+      .transition()
+        .duration(1500)
+        .attrTween("d", arcTween);
+
+    d3.select("#size").classed("active", true);
+    d3.select("#count").classed("active", false);
+  });
+
+  d3.select("#count").on("click", function() {
+    path
+        .data(partition.value(function(d) { return 1; }))
+      .transition()
+        .duration(1500)
+        .attrTween("d", arcTween);
+
+    d3.select("#size").classed("active", false);
+    d3.select("#count").classed("active", true);
+  });
+});
+
+// Stash the old values for transition.
+function stash(d) {
+  d.x0 = d.x;
+  d.dx0 = d.dx;
+}
+
+// Interpolate the arcs in data space.
+function arcTween(a) {
+  var i = d3.interpolate({x: a.x0, dx: a.dx0}, a);
+  return function(t) {
+    var b = i(t);
+    a.x0 = b.x;
+    a.dx0 = b.dx;
+    return arc(b);
+  };
+}
+  </script>
+</body>
