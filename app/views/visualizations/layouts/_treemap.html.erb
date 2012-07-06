@@ -39,6 +39,7 @@ d3.json("<%= @visualization.dataset.data.url %>", function(data) {
 
   var nodes = treemap.nodes(root)
       .filter(function(d) { return !d.children; });
+      .filter(function(d) { return !d.children; });
 
   var cell = svg.selectAll("g")
       .data(nodes)
