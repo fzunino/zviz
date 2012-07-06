@@ -1,4 +1,4 @@
-<div class="theCanvas"></div>
+<section><section>
 <%= javascript_include_tag 'd3.layout.cloud' %>
 <script>
   d3.layout.cloud().size([300, 300])
@@ -7,13 +7,14 @@
         "than", "this"].map(function(d) {
         return {text: d, size: 10 + Math.random() * 90};
       }))
-      .rotate(function() { return ~~(Math.random() * 2) * 90; })
+      .rotate(function() { return 0; })
       .fontSize(function(d) { return d.size; })
       .on("end", draw)
+      .font("Verdana")        
       .start();
 
   function draw(words) {
-    d3.select(".theCanvas").append("svg")
+    d3.select("section").append("svg")
         .attr("width", 300)
         .attr("height", 300)
       .append("g")
