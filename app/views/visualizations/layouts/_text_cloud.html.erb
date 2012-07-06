@@ -1,24 +1,40 @@
 <section><section>
+<%= javascript_include_tag 'underscore' %>
 <%= javascript_include_tag 'd3.layout.cloud' %>
 <script>
-  d3.layout.cloud().size([300, 300])
-      .words([
-        "Hello", "world", "normally", "you", "want", "more", "words",
-        "than", "this"].map(function(d) {
-        return {text: d, size: 10 + Math.random() * 90};
-      }))
+  var w = 800;
+  var h = 600;
+  var fontSize = d3.scale.log().range([20, 100]);
+  d3.json("<%= @visualization.dataset.data.url %>", function(data) {
+
+    data = _(data.elements).map(function(d) {
+      return {
+        text: d.label,
+        size: d.value
+      };
+    });
+
+    d3.layout.cloud().size([w, h])
+      .words(data)
+      // .words([
+      //   "Hello", "world", "normally", "you", "want", "more", "words",
+      //   "than", "this"].map(function(d) {
+      //   return {text: d, size: 10 + Math.random() * 90};
+      // }))
       .rotate(function() { return 0; })
-      .fontSize(function(d) { return d.size; })
+      .fontSize(function(d) { return fontSize(d.size); })
+      .padding(20)
       .on("end", draw)
       .font("Verdana")        
       .start();
+  });
 
   function draw(words) {
     d3.select("section").append("svg")
-        .attr("width", 300)
-        .attr("height", 300)
+        .attr("width", w)
+        .attr("height", h)
       .append("g")
-        .attr("transform", "translate(150,150)")
+        .attr("transform", "translate(" + w/2 + "," + h/2 + ")")
       .selectAll("text")
         .data(words)
       .enter().append("text")
