@@ -1,0 +1,16 @@
+{
+  "name": "Words distribution",
+  "elements": [{
+    "label": "Pepe",
+    "value": 20
+  }, {
+    "label": "Pepe2",
+    "value": 40
+  }, {
+    "label": "PepeA",
+    "value": 50    
+  }, {
+    "label": "Pepe3",
+    "value": 60
+  }]
+}
