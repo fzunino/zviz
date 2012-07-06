@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=vs2010
+Comment=Starts the VirtualBox machine vs2010
+Type=Application
+Exec=/usr/lib/virtualbox/VirtualBox --comment "vs2010" --startvm "8c7f97d5-c5b9-49eb-9173-23c50d87f971"
+Icon=virtualbox-vbox.png

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120706145143) do
+ActiveRecord::Schema.define(:version => 20120706151533) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -50,10 +50,18 @@ ActiveRecord::Schema.define(:version => 20120706145143) do
     t.string   "name"
     t.string   "description"
     t.string   "data"
+    t.integer  "layout_id",   :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.string   "type"
-    t.string   "layouts"
+  end
+
+  add_index "datasets", ["layout_id"], :name => "index_datasets_on_layout_id"
+
+  create_table "layouts", :force => true do |t|
+    t.string   "name"
+    t.string   "display_types"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "visualizations", :force => true do |t|
@@ -62,7 +70,7 @@ ActiveRecord::Schema.define(:version => 20120706145143) do
     t.integer  "dataset_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.string   "layout"
+    t.string   "layout_type"
   end
 
   add_index "visualizations", ["dataset_id"], :name => "index_visualizations_on_dataset_id"
