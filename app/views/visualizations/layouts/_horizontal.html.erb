@@ -1,0 +1,68 @@
+<%= javascript_include_tag 'highcharts' %>
+<%= javascript_include_tag 'exporting' %>
+
+<script>
+$(function () {
+
+  $.getJSON( "<%= @visualization.dataset.data.url %>", function(data){
+
+  	  var chart, dataGraph = data;
+$(document).ready(function() {
+
+      chart = new Highcharts.Chart({
+          chart: {
+              renderTo: 'container',
+              type: 'bar'
+          },
+          title: {
+              text: dataGraph.title
+          },
+          subtitle: {
+              text: dataGraph.subtitle
+          },
+          xAxis: [{
+              categories: dataGraph.categories,
+              reversed: false
+          }, { // mirror axis on right side
+              opposite: true,
+              reversed: false,
+              categories: dataGraph.categories,
+              linkedTo: 0
+          }],
+          yAxis: {
+              title: {
+                  text: null
+              },
+              labels: {
+                  formatter: function(){
+                      return (Math.abs(this.value) / 1000000) + 'M';
+                  }
+              },
+              min: -4000000,
+              max: 4000000
+          },
+
+          plotOptions: {
+              series: {
+                  stacking: 'normal'
+              }
+          },
+
+          tooltip: {
+              formatter: function(){
+                  return '<b>'+ this.series.name +', age '+ this.point.category +'</b><br/>'+
+                      'Population: '+ Highcharts.numberFormat(Math.abs(this.point.y), 0);
+              }
+          },
+
+          series: dataGraph.series
+      });
+  });
+});
+
+
+});
+
+  
+</script>
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
