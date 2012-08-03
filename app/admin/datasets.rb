@@ -4,6 +4,7 @@ ActiveAdmin.register Dataset do
   		f.input :name
   		f.input :data
   		f.input :layout
+  		f.input :description
   	end
   	f.buttons
   end   

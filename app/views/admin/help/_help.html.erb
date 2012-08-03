@@ -1,0 +1,67 @@
+<h1>Página de ayuda</h1><br/>
+
+<h2>Creación de visualización:</h2>
+Crear un dataset
+<ul>
+	<li>Ir a admin/datasets/ -> New dataset</li>
+	<li>Ingresar nombre y adjuntar el archivo .json</li>
+	<li>seleccionar el layout correspondiente al archivo adjunto (link a formatos)</li>
+</ul>
+Crear la visualización
+<ul>
+	<li>Ir a admin/visualizations -> New Visualization</li>
+	<li>Ingresar el nombre y la descripción de la visualizacion</li>
+	<li>Seleccionar el dataset creado en el paso anterior</li>
+</ul>
+Para acceder a la visualización creada, ir a /visualizations/<b>id</b>, ingresando el id de la visualizacion creada.
+<br/>
+<br/>
+<h2>Formatos de dataset(Hacer link)</h2>
+
+
+<b>Hierarchical:</b>
+<pre>
+{
+    "name": "JSConf Retweets",
+    "children": [{
+        "name": "Community 0",
+        "children": [{
+            "name": "nicomagni",
+            "size": 1
+        }, {
+            "name": "ralibajales",
+            "size": 3
+        }]
+    }, 
+    {
+        "name": "Community 1",
+        "children": [{
+            "name": "rauchg",
+            "size": 10
+        }, {
+            "name": "eabait",
+            "size": 2
+        }]
+    }]
+}
+</pre>
+
+<b>Volume:</b>
+<pre>
+{
+  "name": "JavaScript words distribution",
+  "elements": [{
+      "label": "javascript",
+      "value": 71
+  }, {
+      "label": "BitTorrent",
+      "value": 42
+  }, {
+      "label": "Torque",
+      "value": 32
+  }, {
+      "label": "introduces",
+      "value": 29
+  }]
+}
+</pre>
