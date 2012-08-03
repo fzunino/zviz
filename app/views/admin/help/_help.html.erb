@@ -16,10 +16,10 @@ Crear la visualización
 Para acceder a la visualización creada, ir a /visualizations/<b>id</b>, ingresando el id de la visualizacion creada.
 <br/>
 <br/>
-<h2>Formatos de dataset(Hacer link)</h2>
+<h2>Estrucuturas de JSON validas:</h2>
 
 
-<b>Hierarchical:</b>
+<b>Para graficos de tipo Jerarquico:</b>
 <pre>
 {
     "name": "JSConf Retweets",
@@ -46,7 +46,7 @@ Para acceder a la visualización creada, ir a /visualizations/<b>id</b>, ingresa
 }
 </pre>
 
-<b>Volume:</b>
+<b>Para graficos de tipo que representan conjuntos de datos (nube de palabras):</b>
 <pre>
 {
   "name": "JavaScript words distribution",
@@ -65,3 +65,49 @@ Para acceder a la visualización creada, ir a /visualizations/<b>id</b>, ingresa
   }]
 }
 </pre>
+
+<b>Para graficos de tipo Stack y Subtipo bar:</b>
+<pre>
+JSon para 
+{
+    "series": 
+    [{
+        "name": "John",
+        "data": [5, 3, 4, 7, 2]
+    }, {
+        "name": "Jane",
+        "data": [2, 2, 3, 2, 1]
+    }, {
+        "name": "Joe",
+        "data": [3, 4, 4, 2, 5]
+    }],
+    
+    "title": "Stacked bar chart",
+    "categories": ["Apples", "Oranges", "Pears", "Grapes", "Bananas"],
+    "axisTitle": "Total fruit consumption"
+}
+</pre>
+<b>Para graficos de tipo Stack y Subtipo horizontal:</b>
+<pre>
+{
+"title": "Population pyramid for Germany, midyear 2010",
+"subtitle": "Source: www.census.gov",
+"categories": ["0-4", "5-9", "10-14", "15-19",
+  "20-24", "25-29", "30-34", "35-39", "40-44",
+  "45-49", "50-54", "55-59", "60-64", "65-69",
+  "70-74", "75-79", "80-84", "85-89", "90-94",
+  "95-99", "100 +"],
+"series": [{
+      "name": "Male",
+      "data": [-1746181, -1884428, -2089758, -2222362, -2537431, -2507081, -2443179,
+          -2664537, -3556505, -3680231, -3143062, -2721122, -2229181, -2227768,
+          -2176300, -1329968, -836804, -354784, -90569, -28367, -3878]
+  }, {
+      "name": "Female",
+      "data": [1656154, 1787564, 1981671, 2108575, 2403438, 2366003, 2301402, 2519874,
+          3360596, 3493473, 3050775, 2759560, 2304444, 2426504, 2568938, 1785638,
+          1447162, 1005011, 330870, 130632, 21208]
+  }]
+}
+</pre>
+
