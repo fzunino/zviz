@@ -1,0 +1,48 @@
+<html lang="en">
+	<head>
+		<title>Prueba Time Stream</title>
+		<link type="text/css" rel="stylesheet" 
+		href="../vendor/assets/stylesheets/rickshaw.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
+		<script src="../vendor/assets/javascripts/rickshaw.js"></script>
+		<script src="../vendor/assets/javascripts/d3-2.9.6.js"></script>
+		<script src="../vendor/assets/javascripts/d3.layout.js"></script>
+
+		<script src="../vendor/assets/javascripts/random_data.js"></script>
+	</head>
+	<body>
+		<style>
+				div, span, p, td {
+			font-family: Arial, sans-serif;
+		}
+		#chart {
+			display: inline-block;
+		}
+		#legend {
+			display: inline-block;
+			position: relative;
+			left: 8px;
+		}
+		#legend_container {
+			position: absolute;
+			right: 0;
+			bottom: 26px;
+			width: 0;
+		}
+		#chart_container {
+			float: left;
+			position: relative;
+		}
+		
+	</style>
+	<div id="chart_container">
+		<div id="chart"></div>
+		<div id="legend_container">
+			<div id="smoother" title="Smoothing"></div>
+			<div id="legend"></div>
+		</div>
+		<div id="slider"></div>
+	</div>
+
+</body>

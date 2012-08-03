@@ -1,0 +1,82 @@
+<%= javascript_include_tag 'rickshaw' %>
+<%= javascript_include_tag 'd3-2.9.6' %>
+<%= javascript_include_tag 'd3.layout' %>
+<%= stylesheet_link_tag 'rickshaw' %>
+<style>
+#chart_container {
+        position: relative;
+        display: inline-block;
+        font-family: Arial, Helvetica, sans-serif;
+}
+#chart {
+        display: inline-block;
+        margin-left: 40px;
+}
+#y_axis {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 40px;
+}
+#legend {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 0 0 10px;
+}
+</style>
+<script>
+$(function () {
+
+
+  $.getJSON( "<%= @visualization.dataset.data.url %>", function(data){
+
+    var datagraph = data;
+    $(document).ready(function() {
+
+      var palette = new Rickshaw.Color.Palette();
+      
+      for(var i = 0 ; i < datagraph.series.length ;i++ ){
+        datagraph.series[i].color = palette.color()
+      }
+
+
+      var graph = new Rickshaw.Graph( {
+        element: document.querySelector("#chart"),
+        width: 550,
+        height: 250,
+        series: datagraph.series         
+      } );
+      var x_axis = new Rickshaw.Graph.Axis.Time( { graph: graph } );
+
+      var y_axis = new Rickshaw.Graph.Axis.Y( {
+              graph: graph,
+              orientation: 'left',
+              tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+              element: document.getElementById('y_axis'),
+      } );
+
+      var legend = new Rickshaw.Graph.Legend( {
+              element: document.querySelector('#legend'),
+              graph: graph
+      });
+      graph.render();
+      var hoverDetail = new Rickshaw.Graph.HoverDetail( {
+      graph: graph
+      } );
+
+      var highlighter = new Rickshaw.Graph.Behavior.Series.Highlight({
+          graph: graph,
+          legend: legend
+      });
+    });    
+  });
+});
+</script>
+
+<div id="chart_container">
+  <div id="y_axis"></div>
+  <div id="chart"></div>
+</div>
+
+<div id="legend"></div>
+
