@@ -7,36 +7,36 @@ $(function () {
   $.getJSON( "<%= @visualization.dataset.data.url %>", function(data){
 
   	  var chart, dataGraph = data;
-$(document).ready(function() {
+      $(document).ready(function() {
 
-      chart = new Highcharts.Chart({
-          chart: {
-              renderTo: 'container',
-              type: 'bar'
-          },
-          title: {
-              text: dataGraph.title
-          },
-          subtitle: {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container',
+                type: 'bar'
+            },
+            title: {
+                text: dataGraph.title
+            },
+            subtitle: {
               text: dataGraph.subtitle
-          },
-          xAxis: [{
+            },
+            xAxis: [{
               categories: dataGraph.categories,
               reversed: false
-          }, { // mirror axis on right side
+            }, { // mirror axis on right side
               opposite: true,
               reversed: false,
               categories: dataGraph.categories,
               linkedTo: 0
-          }],
-          yAxis: {
+            }],
+            yAxis: {
               title: {
-                  text: null
+                text: null
               },
               labels: {
-                  formatter: function(){
-                      return (Math.abs(this.value) / 1000000) + 'M';
-                  }
+                formatter: function(){
+                  return (Math.abs(this.value) / 1000000) + 'M';
+                }
               },
               min: -4000000,
               max: 4000000
@@ -54,7 +54,6 @@ $(document).ready(function() {
                       'Population: '+ Highcharts.numberFormat(Math.abs(this.point.y), 0);
               }
           },
-
           series: dataGraph.series
       });
   });
